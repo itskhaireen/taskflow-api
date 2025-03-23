@@ -36,7 +36,7 @@ jobs:
 
     - name: Run Docker container
       run: |
-        docker run -d -p 8081:8080 --name taskmanager taskmanager:latest || {
+        docker run -d -p 8080:8080 --name taskmanager taskmanager:latest || {
           echo "Failed to start container. Checking for issues..."
           docker ps -a
           docker logs taskmanager || echo "No container logs available"
