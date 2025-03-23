@@ -1,0 +1,2 @@
+INSERT INTO app_user (id, username, password) VALUES (NEXTVAL ('app_user_seq'), 'testuser', 'password123');
+INSERT INTO task (id, title, description, completed, user_Id ) VALUES (NEXTVAL ('task_seq'), 'Test Task', 'A task for testuser', false, 1);
