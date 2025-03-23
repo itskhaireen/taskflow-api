@@ -54,4 +54,4 @@ jobs:
 
     - name: Test container
       run: |
-        curl --fail -v http://localhost:8081/api/auth/register -H "Content-Type: application/json" -d '{"username":"testuser","password":"pass123"}'
+        curl --fail -v http://localhost:8080/api/auth/register -H "Content-Type: application/json" -d '{"username":"testuser","password":"pass123"}'
