@@ -37,6 +37,15 @@ jobs:
     - name: Run Docker container
       run: docker run -d -p 8080:8080 taskmanager:latest
 
+    - name: Check running containers
+      run: docker ps
+
+    - name: Wait for container to start
+      run: sleep 10 # Increase to 10 seconds
+
+    - name: Check container logs
+      run: docker logs taskmanager
+
     - name: Test container
       run: |
         sleep 5  # Wait for container to start
