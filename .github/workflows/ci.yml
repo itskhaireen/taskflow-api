@@ -14,13 +14,13 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v4
       with:
-        fetch-depth: 0  # Fetches full history for better context
+        fetch-depth: 0
 
     - name: Set up JDK 21
       uses: actions/setup-java@v4
       with:
         java-version: '21'
-        distribution: 'temurin'  # Uses Eclipse Temurin JDK distribution
+        distribution: 'temurin'
 
     - name: Build with Maven
       run: mvn clean package
@@ -29,24 +29,29 @@ jobs:
       run: mvn test
 
     - name: Set up Docker Buildx
-      uses: docker/setup-buildx-action@v3  # Sets up Docker Buildx for building images
+      uses: docker/setup-buildx-action@v3
 
     - name: Build Docker image
       run: docker build -t taskmanager:latest -f src/main/Dockerfile .
 
     - name: Run Docker container
-      run: docker run -d -p 8080:8080 taskmanager:latest
+      run: |
+        docker run -d -p 8081:8080 --name taskmanager taskmanager:latest || {
+          echo "Failed to start container. Checking for issues..."
+          docker ps -a
+          docker logs taskmanager || echo "No container logs available"
+          exit 1
+        }
 
     - name: Check running containers
       run: docker ps
 
     - name: Wait for container to start
-      run: sleep 10 # Increase to 10 seconds
+      run: sleep 30
 
     - name: Check container logs
       run: docker logs taskmanager
 
     - name: Test container
       run: |
-        sleep 5  # Wait for container to start
-        curl --fail http://localhost:8080/api/auth/register -H "Content-Type: application/json" -d '{"username":"testuser","password":"pass123"}'
+        curl --fail -v http://localhost:8081/api/auth/register -H "Content-Type: application/json" -d '{"username":"testuser","password":"pass123"}'
