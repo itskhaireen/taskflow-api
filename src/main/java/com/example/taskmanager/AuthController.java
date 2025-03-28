@@ -1,8 +1,10 @@
 package com.example.taskmanager;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.server.ResponseStatusException;
 
 @RestController
 @RequestMapping("/api/auth")
@@ -30,8 +32,15 @@ public class AuthController {
 
     @PostMapping("/register")
     public String register(@RequestBody RegisterRequest request) {
-        authService.register(request.username(), request.password());
-        return "User Registered Successfully";
+        
+        // Added a try-catch block to catch an IllegalArgumentException when a user already exist!
+        // Used ResponseStatusException to return a 409 Conflict with a message.
+        try {
+            authService.register(request.username(), request.password());
+            return "User Registered Successfully";
+        } catch (IllegalArgumentException e) {
+            throw new ResponseStatusException(HttpStatus.CONFLICT, "User Already Existed");
+        }
     }
 
 }
