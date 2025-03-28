@@ -52,10 +52,6 @@ jobs:
     - name: Check container logs
       run: docker logs taskmanager
 
-    - name: Test container with /api/auth/register
+    - name: Test container
       run: |
         curl --fail -v http://localhost:8080/api/auth/register -H "Content-Type: application/json" -d '{"username":"testuser-$(date +%s)","password":"pass123"}'
-
-    - name: Test container with /auth/register
-      run: |
-        curl --fail -v http://localhost:8080/auth/register -H "Content-Type: application/json" -d '{"username":"testuser-$(date +%s)","password":"pass123"}'
