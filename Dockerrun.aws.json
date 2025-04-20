@@ -1,7 +1,7 @@
 {
  "AWSEBDockerrunVersion": "1",
  "Image": {
-	"Name": "taskmanager:latest",
+	"Name": "itskhaireen/taskmanager:latest",
 	"Update": "true"
  },
 
