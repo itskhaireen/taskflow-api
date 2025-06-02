@@ -81,7 +81,7 @@ The application will start running at `http://localhost:8080`
 - Protected endpoints
 - Role-based access control (coming soon)
 
-## 🧪 Testing (Coming Soon)
+## 🧪 Testing (On going)
 
 - Unit Tests
 - Integration Tests
@@ -100,8 +100,8 @@ This is a personal project for learning and demonstration purposes. However, fee
 
 ## 👤 Author
 
-[Your Name]
-- LinkedIn: Putri Khaireen Jasmin
+- **Putri Khaireen Jasmin**
+- LinkedIn: www.linkedin.com/in/khaireen
 - GitHub: itskhaireen
 
 ---
