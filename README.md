@@ -1,4 +1,4 @@
-# Task Manager API
+# TaskFlow API
 
 A robust REST API for task management built with Spring Boot. This application provides comprehensive task management capabilities with secure user authentication.
 
@@ -41,12 +41,12 @@ A robust REST API for task management built with Spring Boot. This application p
 
 1. **Clone the repository**
    ```bash
-   git clone [your-repository-url]
+   git clone https://github.com/itskhaireen/taskflow-api.git
    ```
 
 2. **Navigate to the project directory**
    ```bash
-   cd taskmanager
+   cd taskflow-api
    ```
 
 3. **Build the project**
