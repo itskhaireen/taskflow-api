@@ -1,5 +1,7 @@
-package com.example.taskmanager;
+package com.example.taskmanager.service;
 
+import com.example.taskmanager.model.User;
+import com.example.taskmanager.repository.UserRepository;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 

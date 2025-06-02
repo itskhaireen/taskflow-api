@@ -1,10 +1,11 @@
-package com.example.taskmanager;
+package com.example.taskmanager.security;
 
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.filter.OncePerRequestFilter;
+import org.springframework.lang.NonNull;
 
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
@@ -25,9 +26,11 @@ public class JwtFilter extends OncePerRequestFilter {
         this.key = Keys.hmacShaKeyFor(secretKey.getBytes(StandardCharsets.UTF_8));
     }
 
-    @SuppressWarnings("null")
     @Override
-    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain) throws ServletException, IOException {
+    protected void doFilterInternal(
+            @NonNull HttpServletRequest request,
+            @NonNull HttpServletResponse response,
+            @NonNull FilterChain filterChain) throws ServletException, IOException {
         String authHeader = request.getHeader("Authorization");
         if (authHeader != null && authHeader.startsWith("Bearer ")){
             String token = authHeader.substring(7);
@@ -52,7 +55,7 @@ public class JwtFilter extends OncePerRequestFilter {
                 return;
             }
         }
-        chain.doFilter(request, response);
+        filterChain.doFilter(request, response);
     }
 
     public static void blacklistToken(String token){

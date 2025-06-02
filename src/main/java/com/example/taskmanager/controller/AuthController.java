@@ -1,5 +1,7 @@
-package com.example.taskmanager;
+package com.example.taskmanager.controller;
 
+import com.example.taskmanager.service.AuthService;
+import com.example.taskmanager.security.JwtFilter;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;

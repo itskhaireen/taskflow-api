@@ -1,5 +1,7 @@
-package com.example.taskmanager;
+package com.example.taskmanager.security;
 
+import com.example.taskmanager.model.User;
+import com.example.taskmanager.repository.UserRepository;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
